@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Offer = () => {
   const params = useParams();
@@ -42,47 +43,80 @@ EXEMLE:
         <div>
           <div>SALUT MONDE</div>
           <div>Offer detail {params.id} </div>
-
-          {offers.offers.map((item, index) => {
-            return (
-              <article>
-                {item._id === params.idToto && (
-                  <section
-                    style={{
-                      display: "flex",
-                      backgroundColor: "beige",
-                      marginBottom: "5px",
-                    }}
-                  >
-                    {item.picture && (
-                      <img
+          <nav
+            style={{
+              display: "flex",
+              backgroundColor: "white",
+              marginBottom: "5px",
+            }}
+          >
+            {offers.offers.map((item, index) => {
+              return (
+                <article>
+                  {item._id === params.idToto && (
+                    <>
+                      <section
                         style={{
-                          height: "135px",
-                          width: "135px",
-                          borderRadius: "5px",
-                          objectFit: "cover",
+                          backgroundColor: "beige",
+                          width: "705px",
+                          height: "610px",
                         }}
-                        alt={item.title}
-                        src={item.picture.url}
-                      />
-                    )}
-                    <h2
-                      style={{
-                        backgroundColor: "blue",
-                      }}
-                    >
-                      {item.title}
-                    </h2>
-                    <div>{item.price} € </div>
-                    <br />
-                    <div>{item.created}</div>
-                    <div>{item._id}</div>
-                    <p>{item.description.slice(0, 60)}...</p>
-                  </section>
-                )}
-              </article>
-            );
-          })}
+                      >
+                        {item.picture && (
+                          <img
+                            style={{
+                              height: "395px",
+                              width: "700px",
+                              borderRadius: "5px",
+                              objectFit: "cover",
+                            }}
+                            alt={item.title}
+                            src={item.picture.url}
+                          />
+                        )}
+                        <h2
+                          style={{
+                            backgroundColor: "blue",
+                          }}
+                        >
+                          {item.title}
+                        </h2>
+                        <div>{item.price} € </div>
+                        <br />
+                        <div>{item.created}</div>
+                        <div>{item._id}</div>
+                      </section>
+
+                      <section
+                        style={{
+                          backgroundColor: "beige",
+                          marginTop: "30px",
+                          width: "705px",
+                          height: "155px",
+                        }}
+                      >
+                        Description
+                        <p>{item.description.slice(0, 60)}...</p>
+                      </section>
+                    </>
+                  )}
+                </article>
+              );
+            })}
+            <aside>
+              <div>USERNAME</div>
+
+              <div className="Linkdiv">
+                <Link
+                  className="Link"
+                  style={{ textDecoration: "none" }}
+                  to="/payment/"
+                >
+                  Acheter
+                </Link>
+              </div>
+            </aside>
+          </nav>
         </div>
       )}
     </>
@@ -90,5 +124,3 @@ EXEMLE:
 };
 
 export default Offer;
-
-

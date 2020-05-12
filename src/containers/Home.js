@@ -32,11 +32,16 @@ const Home = () => {
       <br />
       <Link to="user/sign_up2">
         <div>M'inscrire 2</div>
-        <br />
-        <br />
-        <Link to="user/publish">
-          <div>Publier</div>
-        </Link>
+      </Link>
+      <br />
+      <br />
+      <Link to="user/publish">
+        <div>Publier</div>
+      </Link>
+      <br />
+      <br />
+      <Link to="payment">
+        <div>Payer</div>
       </Link>
     </nav>
   );

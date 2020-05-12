@@ -10,7 +10,10 @@ import {
 } from "react-router-dom";
 import Cookies from "js-cookie";
 
-// IMPORT DES ROUTES (CONTAINERS)
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+// IMPORT DES ROUTES (containers) ET COMPOSANTS (components)
 import Home from "./containers/Home";
 import Products from "./containers/Products";
 import Offers from "./containers/Offers";
@@ -19,8 +22,11 @@ import Offer from "./containers/Offer";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Signup2 from "./containers/Signup2";
-import Publish from "./containers/Publish";
 import Header from "./components/Header";
+import Publish from "./containers/Publish";
+import CheckoutForm from "./components/CheckoutForm";
+
+const stripePromise = loadStripe("pk_test_xrkbJESGzd3ioohK81jth6mb00IFT519pp");
 
 function App() {
   const tokenFromCookie = Cookies.get("userToken");
@@ -58,6 +64,13 @@ function App() {
             {/*   <Route path="/offers/">
               <OffersFilter />
             </Route> */}
+            {/* ROUTE PAIMENNT (STRIPE) ------------------------------------------------- */}
+            <Route path="/payment/">
+              <Elements stripe={stripePromise}>
+                <CheckoutForm />
+                {/*  tous les enfants de elements oauront acces à stripe */}
+              </Elements>
+            </Route>
             {/* ROUTE OFFERS (LIST) ------------------------------------------------- */}
             <Route path="/offers/">
               <Offers />

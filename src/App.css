@@ -69,10 +69,30 @@ nav Link {
 .Linkdiv {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 25px;
   border: solid 1px;
   color: black;
   height: 30px;
   padding: 10px;
   box-sizing: border-box;
+  background-color: white;
+}
+
+aside {
+  border: solid 1px;
+  color: black;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 285px;
+  height: 200px;
+  background-color: beige;
+}
+
+aside div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24àpx;
+  height: 100px;
 }
